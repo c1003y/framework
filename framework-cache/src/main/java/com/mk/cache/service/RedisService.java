@@ -13,6 +13,10 @@ public class RedisService {
     @Autowired
     private JedisPool jedisPool;
 
+    public Jedis getResource(){
+        return jedisPool.getResource();
+    }
+
     public <T> T execute(RedisCallback<T> action){
         Jedis jedis = jedisPool.getResource();
         T result;
